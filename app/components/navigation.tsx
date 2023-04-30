@@ -10,7 +10,7 @@ interface navigationProps {
 const Navigation: FC<navigationProps> = ({}) => {
   return (
     <>
-      <div className='flex flex-row justify-between w-full p-3'>
+      <div className='flex flex-row items-center justify-between w-full py-3 px-6 border-b-[1px] border-slate-200'>
         <div className='w-[8%]'>
           <Logo />
         </div>
