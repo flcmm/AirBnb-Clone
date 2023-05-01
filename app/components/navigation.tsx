@@ -17,7 +17,7 @@ const Navigation: FC<navigationProps> = ({}) => {
         <div className='w-1/4'>
           <Searchbar />
         </div>
-        <div className='w-[20%]'>
+        <div className='w-1/4'>
           <User />
         </div>
       </div>

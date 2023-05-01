@@ -7,15 +7,21 @@ interface searchbarProps {
 const Searchbar: FC<searchbarProps> = ({}) => {
   return (
     <>
-      <div className='w-full px-2 flex flex-row justify-center hover:drop-shadow-2xl border-slate-300 border-[1px] drop-shadow-2xl gap-2 rounded-full'>
-        <div className='grid place-content-center px-2 border-r-[1px] border-r-slate-300'>
-          <h1 className='text-sm'>Anywhere</h1>
-        </div>
-        <div className='grid place-content-center px-2 border-r-[1px] border-r-slate-300'>
-          <h1 className='text-sm'>Anyweek</h1>
+      <div className='w-full p-2 flex flex-row justify-center hover:drop-shadow-2xl border-slate-300 border-[1px] drop-shadow-2xl gap-2 rounded-full'>
+        <div className='grid place-content-center'>
+          <div className='border-r-[1px] px-2 border-r-slate-300'>
+            <h1 className='text-sm font-medium'>Anywhere</h1>
+          </div>
         </div>
         <div className='grid place-content-center'>
-          <h1 className='text-sm'>Add Guest</h1>
+          <div className='border-r-[1px] px-2 border-r-slate-300'>
+            <h1 className='text-sm font-medium'>Anyweek</h1>
+          </div>
+        </div>
+        <div className='grid place-content-center'>
+          <div>
+            <h1 className='text-sm'>Add Guest</h1>
+          </div>
         </div>
         <svg className='w-[10%]' viewBox="0 0 24 24" fill="#FF5A5F" xmlns="http://www.w3.org/2000/svg">
           <rect width="24" height="24" fill="white"/>
