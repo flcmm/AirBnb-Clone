@@ -42,10 +42,24 @@ const registerModal: FC<registerModalProps> = ({}) => {
     }
     else {
       const hash = crypto.createHash('sha256')
-      const password = passwordField.current?.value
+      const firstName = (firstnameField.current?.value ?? '').replace(/[^a-zA-Z0-9]/g, "")
+      const lastName = (lastnameField.current?.value ?? '').replace(/[^a-zA-Z0-9]/g, "")
+      const contactNo = (contactnumberField.current?.value ?? '').replace(/[^a-zA-Z0-9]/g, "")
+      const email = (emailField.current?.value ?? '').replace(/[^a-zA-Z0-9]/g, "")
+      const username = (usernameField.current?.value ?? '').replace(/[^a-zA-Z0-9]/g, "")
+      const passwordRaw = (passwordField.current?.value ?? '').replace(/[^a-zA-Z0-9]/g, "")
       alert('Success')
-      if (password) {
-        console.log(hashConvert(password))
+      if (passwordRaw) {
+        let password = hashConvert(passwordRaw)
+        Register({
+          firstName,
+          lastName,
+          contactNo,
+          email,
+          username,
+          password 
+        })
+        
       }
     }
   }
