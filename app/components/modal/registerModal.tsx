@@ -52,14 +52,13 @@ const registerModal: FC<registerModalProps> = ({}) => {
       if (passwordRaw) {
         let password = hashConvert(passwordRaw)
         Register({
-          firstName,
-          lastName,
-          contactNo,
-          email,
-          username,
-          password 
+          firstName: firstName,
+          lastName: lastName,
+          contactNo: contactNo,
+          email: email,
+          username: username,
+          password: password
         })
-        
       }
     }
   }

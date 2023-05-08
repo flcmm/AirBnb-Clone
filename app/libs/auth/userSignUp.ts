@@ -23,4 +23,5 @@ export async function Register(
       password: password
     }
   )
+  console.log(error)
 }
