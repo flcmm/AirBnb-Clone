@@ -7,7 +7,7 @@ interface registerModalProps {
   
 }
 
-const registerModal: FC<registerModalProps> = ({}) => {
+const RegisterModal: FC<registerModalProps> = ({}) => {
   const crypto = require('crypto')
   const firstnameField = useRef<HTMLInputElement>()
   const lastnameField = useRef<HTMLInputElement>()
@@ -91,8 +91,4 @@ const registerModal: FC<registerModalProps> = ({}) => {
   )
 }
 
-export default registerModal
-
-function signUp(arg0: { variables: {} }) {
-  throw new Error('Function not implemented.')
-}
+export default RegisterModal
