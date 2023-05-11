@@ -1,8 +1,5 @@
 export interface RegisterTypes {
-  firstName: string,
-  lastName: string,
-  contactNo: string,
+  name: string,
   email: string,
-  username: string,
   password: string
 }

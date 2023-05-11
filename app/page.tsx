@@ -1,16 +1,15 @@
 import React from 'react'
 import Navigation from './components/navigation'
-import Button from './components/button'
 import Filters from './components/filterpane/filters'
-import RegisterModal from './components/modal/signupModal'
+import Modals from './components/modals'
 
 export default function Home() {
   return (
     <>
-      <div className=''>
+      <div className='relative w-full'>
         <Navigation />
         <Filters />
-        <RegisterModal />
+        <Modals hidden={false} mode='signup' />
       </div>
     </>
   )

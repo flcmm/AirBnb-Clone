@@ -2,6 +2,7 @@
 import { FC, LegacyRef, useRef } from 'react'
 import { supabase } from '../../libs/supabase'
 import { Register } from '@/app/libs/auth/userSignUp'
+import Input from '../input/input'
 
 interface registerModalProps {
   
@@ -9,12 +10,9 @@ interface registerModalProps {
 
 const RegisterModal: FC<registerModalProps> = ({}) => {
   const crypto = require('crypto')
-  const firstnameField = useRef<HTMLInputElement>()
-  const lastnameField = useRef<HTMLInputElement>()
-  const contactnumberField = useRef<HTMLInputElement>()
-  const emailField = useRef<HTMLInputElement>()
-  const usernameField = useRef<HTMLInputElement>()
-  const passwordField = useRef<HTMLInputElement>()
+  const nameField = useRef<HTMLInputElement>(null)
+  const emailField = useRef<HTMLInputElement>(null)
+  const passwordField = useRef<HTMLInputElement>(null)
   const hashConvert = (pass: string) => {
     const hash = crypto.createHash('sha256');
     hash.update(pass);
@@ -22,41 +20,26 @@ const RegisterModal: FC<registerModalProps> = ({}) => {
   }
 
   const handleSignUp = async () => {
-    if (firstnameField.current?.value === '') {
-      alert('Please fill up the First Name field')
-    }
-    else if (lastnameField.current?.value === '') {
+    if (nameField.current?.value === '') {
       alert('Please fill up the Last Name field')
-    }
-    else if (contactnumberField.current?.value === '') {
-      alert('Please fill up the Contact Number field')
     }
     else if (emailField.current?.value === '') {
       alert('Please fill up the Email field')
-    }
-    else if (usernameField.current?.value === '') {
-      alert('Please fill up the Username field')
     }
     else if (passwordField.current?.value === '') {
       alert('Please fill up the Password field')
     }
     else {
       const hash = crypto.createHash('sha256')
-      const firstName = (firstnameField.current?.value ?? '').replace(/[^a-zA-Z0-9]/g, "")
-      const lastName = (lastnameField.current?.value ?? '').replace(/[^a-zA-Z0-9]/g, "")
-      const contactNo = (contactnumberField.current?.value ?? '').replace(/[^a-zA-Z0-9]/g, "")
+      const name = (nameField.current?.value ?? '').replace(/[^a-zA-Z0-9]/g, "")
       const email = (emailField.current?.value ?? '').replace(/[^a-zA-Z0-9]/g, "")
-      const username = (usernameField.current?.value ?? '').replace(/[^a-zA-Z0-9]/g, "")
       const passwordRaw = (passwordField.current?.value ?? '').replace(/[^a-zA-Z0-9]/g, "")
       alert('Success')
       if (passwordRaw) {
         let password = hashConvert(passwordRaw)
         Register({
-          firstName: firstName,
-          lastName: lastName,
-          contactNo: contactNo,
+          name: name,
           email: email,
-          username: username,
           password: password
         })
       }
@@ -64,29 +47,34 @@ const RegisterModal: FC<registerModalProps> = ({}) => {
   }
   return (
     <>
-      <div className='
-      w-1/2
-      flex
-      flex-row
-      justify-center
-      items-center
-      '>
         <div className='
         flex
-        flex-col
+        bg-slate-100
+        rounded-lg
+        flex-row
+        gap-5
         justify-center
         items-center
         w-1/2
+        p-5
         '>
-        <input ref={firstnameField as LegacyRef<HTMLInputElement>} type="text" placeholder='First Name'/>
-        <input ref={lastnameField as LegacyRef<HTMLInputElement>} type="text" placeholder='Last Name'/>
-        <input ref={contactnumberField as LegacyRef<HTMLInputElement>} type="text" placeholder='Contact Number'/>
-        <input ref={emailField as LegacyRef<HTMLInputElement>} type="text" placeholder='Email'/>
-        <input ref={usernameField as LegacyRef<HTMLInputElement>} type="text" placeholder='Username'/>
-        <input ref={passwordField as LegacyRef<HTMLInputElement>} type="text" placeholder='Password'/>
-        <button onClick={() => {handleSignUp()}}>sign up</button>
+          <div>
+            <h1 className='font-bold '>Welcome to AirBNB</h1>
+            <p>Please signup to continue</p>
+          </div>
+          <div className='flex flex-col gap-3'>
+            <div className='flex flex-row gap-3 justify-center items-center'>
+              <Input ref={nameField} className='border-black focus:border-2 border-[1px] outline-none rounded-lg p-2' disabled={false} type='text' placeholder='Name' required={true}/>
+    
+            </div>
+            <div className='flex flex-row gap-3 justify-center items-center'>
+              <Input ref={emailField} className='border-black focus:border-2 border-[1px] outline-none rounded-lg p-2' disabled={false} type='email' placeholder='Email' required={true}/>
+            </div>
+            <div className='flex flex-row gap-3 justify-center items-center'>
+              <Input ref={passwordField} className='border-black focus:border-2 border-[1px] outline-none rounded-lg p-2' disabled={false} type='password' placeholder='Password' required={true}/>
+            </div>
+          </div>
         </div>
-      </div>
     </>
   )
 }

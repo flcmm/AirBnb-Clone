@@ -3,11 +3,8 @@ import { RegisterTypes } from "../types/register-types";
 
 export async function Register(
   {
-    firstName,
-    lastName,
-    contactNo,
+    name,
     email,
-    username,
     password
   }: RegisterTypes
   ) {
@@ -15,11 +12,8 @@ export async function Register(
   .from('users')
   .insert(
     {
-      first_name: firstName,
-      last_name: lastName,
-      contact_number: contactNo,
+      name: name,
       email: email,
-      username: username,
       password: password
     }
   )
