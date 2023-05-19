@@ -3,5 +3,6 @@
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "python.analysis.extraPaths": [
     "./api"
-  ]
+  ],
+  "githubRepositories.autoFetch.interval": 120
 }
