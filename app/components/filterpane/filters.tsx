@@ -1,39 +1,147 @@
 'use client'
 import { FC } from 'react'
 import Image from 'next/image'
-import Tropical from './filter-icons/tropical.png'
-import AmazingPools from './filter-icons/amazing-pools.png'
-import Beachfront from './filter-icons/beachfront.png'
-import Privaterooms from './filter-icons/private-rooms.png'
-import AmazingViews from './filter-icons/amazing-views.png'
-import TinyHomes from './filter-icons/tiny-homes.png'
-import Design from './filter-icons/design.png'
-import Lake from './filter-icons/lake.png'
-import Camping from './filter-icons/camping.png'
-import TreeHouses from './filter-icons/tree-houses.png'
-import Trending from './filter-icons/trending.png'
-import Cabins from './filter-icons/cabins.png'
+import { TbBeach, TbMountain, TbPool } from 'react-icons/tb';
+import { 
+  GiBarn, 
+  GiBoatFishing, 
+  GiCactus, 
+  GiCastle, 
+  GiCaveEntrance, 
+  GiForestCamp, 
+  GiIsland,
+  GiWindmill,
+  GiPalmTree,
+  GiPisaTower,
+  GiSurfBoard
+} from 'react-icons/gi';
+import { AiOutlineFire } from 'react-icons/ai';
+import { FaSkiing } from 'react-icons/fa';
+import { GrKey } from 'react-icons/gr';
+import { BsSnow } from 'react-icons/bs';
+import {
+  MdOutlineVilla,
+  MdCabin,
+  MdSportsGolf
+} from 'react-icons/md';
+import FilterBox from './FilterBox';
 
-interface filterProps {
-  
-}
+export const categories = [
+  {
+    label: 'Mountains',
+    icon: TbMountain,
+    description: 'Mountains Property'
+  },
+  {
+    label: 'Surfing',
+    icon: GiSurfBoard,
+    description: 'Surfing Property'
+  },
+  {
+    label: 'Iconic Cities',
+    icon: GiPisaTower,
+    description: 'Iconic Cities Property'
+  },
+  {
+    label: 'Caves',
+    icon: GiCaveEntrance,
+    description: 'Cave Property'
+  },
+  {
+    label: 'Ski In/Out',
+    icon: FaSkiing,
+    description: 'Ski In/Out Property'
+  },
+  {
+    label: 'Arctic',
+    icon: BsSnow,
+    description: 'Arctic Property'
+  },
+  {
+    label: 'Trending',
+    icon: AiOutlineFire,
+    description: 'Trending Property'
+  },
+  {
+    label: 'Islands',
+    icon: GiIsland,
+    description: 'Island Property'
+  },
+  {
+    label: 'Windmills',
+    icon: GiWindmill,
+    description: 'Windmills Property'
+  },
+  {
+    label: 'Beach',
+    icon: TbBeach,
+    description: 'BeachFront Property'
+  },
+  {
+    label: 'Pools',
+    icon: TbPool,
+    description: 'Pools Property'
+  },
+  {
+    label: 'Tropical',
+    icon: GiPalmTree,
+    description: 'Tropical Property'
+  },
+  {
+    label: 'Cabins',
+    icon: MdCabin,
+    description: 'Cabins Property'
+  },
+  {
+    label: 'Farms',
+    icon: GiBarn,
+    description: 'Farms Property'
+  },
+  {
+    label: 'Tiny Homes',
+    icon: MdOutlineVilla,
+    description: 'Tiny Homes Property'
+  },
+  {
+    label: 'Desert',
+    icon: GiCactus,
+    description: 'Desert Property'
+  },
+  {
+    label: 'Camping',
+    icon: GiForestCamp,
+    description: 'Camping Property'
+  },
+  {
+    label: 'New',
+    icon: GrKey,
+    description: 'New Property'
+  },
+  {
+    label: 'Boats',
+    icon: GiBoatFishing,
+    description: 'Boats Property'
+  },
+  {
+    label: 'Castles',
+    icon: GiCastle,
+    description: 'Castles Property'
+  },
+  {
 
-const Filters: FC<filterProps> = ({}) => {
+  }
+]
+
+
+const Filters = () => {
   // this is a list of filters that will be displayed on the filter pane
   const filtersList = ['Beachfront', 'Amazing pools', 'Private rooms', 'Tropical', 'Amazing views', 'Tiny homes', 'Design', 'Lake', 'Camping', 'Treehouses', 'Trending', 'Cabins']
   // this is a list of icons that will be displayed on the filter pane
-  const filtersIcons = [Beachfront, AmazingPools, Privaterooms, Tropical, AmazingViews, TinyHomes, Design, Lake, Camping, TreeHouses, Trending, Cabins]
   return (
     <>
       <div className='flex flex-row gap-8 w-full px-5 pt-5'>
         {/* this block of code loops over the list of filtersLsit which then creates a div every loops */}
-        {filtersList.map((filter, index) => (
-          <div key={index} className='flex flex-col items-center justify-center gap-2'>
-            {/* we're looping to the variable filterIcons */}
-            <Image src={filtersIcons[index]} alt={filter} width={35} height={35} />
-            <p className='text-[13px]'>{filter}</p>
-          </div>
-        ))}
+        
       </div>
     </>
   )
