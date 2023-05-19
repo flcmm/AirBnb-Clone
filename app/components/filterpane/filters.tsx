@@ -1,5 +1,6 @@
 'use client'
 import { FC } from 'react'
+import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { TbBeach, TbMountain, TbPool } from 'react-icons/tb';
 import { 
@@ -126,22 +127,32 @@ export const categories = [
     label: 'Castles',
     icon: GiCastle,
     description: 'Castles Property'
-  },
-  {
-
   }
 ]
 
 
 const Filters = () => {
-  // this is a list of filters that will be displayed on the filter pane
-  const filtersList = ['Beachfront', 'Amazing pools', 'Private rooms', 'Tropical', 'Amazing views', 'Tiny homes', 'Design', 'Lake', 'Camping', 'Treehouses', 'Trending', 'Cabins']
+  const currentPathName = usePathname()
+  const mainPage = currentPathName === '/'
+  if (!mainPage)
+    return null
   // this is a list of icons that will be displayed on the filter pane
   return (
     <>
       <div className='flex flex-row gap-8 w-full px-5 pt-5'>
         {/* this block of code loops over the list of filtersLsit which then creates a div every loops */}
-        
+        {
+          categories.map((category, index) => {
+            return (
+              <FilterBox
+                key={index}
+                label={category.label}
+                icon={category.icon}
+                description={category.description}
+              />
+            )
+          }, [])
+        }
       </div>
     </>
   )
