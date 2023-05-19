@@ -6,8 +6,7 @@ interface inputProps {
   placeholder?: string,
   required: boolean,
   className: string,
-  ref: MutableRefObject<HTMLInputElement | null>;
-
+  inputRef: MutableRefObject<HTMLInputElement | null>;
 }
 
 
@@ -18,13 +17,13 @@ const Input: FC<inputProps> = (
       placeholder,
       required,
       className,
-      ref
+      inputRef
     }: inputProps
   ) => {
   return (
     <>
       <div className=''>
-        <input ref={ref} className={className} placeholder={placeholder} type={type} disabled={disabled} required={required}/>
+        <input ref={inputRef} className={className} placeholder={placeholder} type={type} disabled={disabled} required={required}/>
       </div>
     </>
   )

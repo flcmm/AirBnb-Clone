@@ -5,7 +5,7 @@ interface buttonProps extends React.HTMLAttributes<HTMLButtonElement> {
   // custom properties goes inside here
   disabled?: boolean
   notAllowed?: boolean,
-  className: string,
+  className?: string,
   text: string
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
 }

@@ -1,7 +1,7 @@
 import React from 'react'
-import Navigation from './components/navigation'
-import Filters from './components/filterpane/filters'
-import Modals from './components/modals'
+import Navigation from './components/NavigationBar'
+import Filters from './components/filterpane/Filters'
+import Modals from './components/ModalCcontainer'
 
 export default function Home() {
   return (
