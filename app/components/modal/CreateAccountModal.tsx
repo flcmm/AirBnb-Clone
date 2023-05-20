@@ -9,7 +9,7 @@ interface SignUpModalProps {
   
 }
 
-const SignUpModal: FC<SignUpModalProps> = ({}) => {
+const CreateAccountModal: FC<SignUpModalProps> = ({}) => {
   const crypto = require('crypto')
   const nameField = useRef<HTMLInputElement>(null)
   const emailField = useRef<HTMLInputElement>(null)
@@ -85,4 +85,4 @@ const SignUpModal: FC<SignUpModalProps> = ({}) => {
   )
 }
 
-export default SignUpModal
+export default CreateAccountModal
