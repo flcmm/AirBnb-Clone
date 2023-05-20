@@ -7,6 +7,7 @@ interface inputProps {
   required: boolean,
   className: string,
   inputRef: MutableRefObject<HTMLInputElement | null>;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 
@@ -17,13 +18,14 @@ const InputComponent: FC<inputProps> = (
       placeholder,
       required,
       className,
-      inputRef
+      inputRef,
+      onChange
     }: inputProps
   ) => {
   return (
     <>
       <div className=''>
-        <input ref={inputRef} className={className} placeholder={placeholder} type={type} disabled={disabled} required={required}/>
+        <input onChange={onChange} ref={inputRef} className={className} placeholder={placeholder} type={type} disabled={disabled} required={required}/>
       </div>
     </>
   )
