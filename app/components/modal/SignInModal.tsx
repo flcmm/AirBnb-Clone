@@ -1,6 +1,6 @@
 'use client'
-import { FC } from 'react'
 import Button from '../Button'
+import { FC } from 'react'
 
 interface SignInModalProps {
 

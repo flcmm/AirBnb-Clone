@@ -1,7 +1,7 @@
 import { FC } from 'react'
-import Logo from './navPane/Logo'
 import Searchbar from './navPane/searchbar'
 import User from './navPane/user'
+import Logo from './navPane/Logo'
 
 interface navigationProps {
   

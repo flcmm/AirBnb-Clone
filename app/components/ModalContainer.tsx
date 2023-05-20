@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import SignupModal from './modal/SignUpModal'
 import SignInModal from './modal/SignInModal'
+import SignupModal from './modal/SignUpModal'
 
 interface modalsProps {
   hidden: boolean,
