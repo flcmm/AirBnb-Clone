@@ -130,7 +130,6 @@ export const categories = [
   }
 ]
 
-
 const FiltersComponent = () => {
   const currentPathName = usePathname()
   const mainPage = currentPathName === '/'
@@ -139,7 +138,7 @@ const FiltersComponent = () => {
   // this is a list of icons that will be displayed on the filter pane
   return (
     <>
-      <div className='flex flex-row gap-8 w-full px-5 pt-5'>
+      <div className='flex flex-row gap-8 max-w-full w-full overflow-hidden px-5 pt-5'>
         {/* this block of code loops over the list of filtersLsit which then creates a div every loops */}
         {
           categories.map((category, index) => {
