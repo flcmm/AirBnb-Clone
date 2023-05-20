@@ -1,9 +1,10 @@
 'use client'
-import { FC, LegacyRef, useRef } from 'react'
+import { FC, LegacyRef, useRef, ChangeEvent } from 'react'
 import { supabase } from '../../libs/supabase'
 import { Register } from '@/app/libs/auth/userSignUp'
 import InputComponent from '../input/InputComponent'
 import ButtonComponent from '../ButtonComponent'
+import { CgCloseR } from 'react-icons/cg'
 
 interface SignUpModalProps {
   
@@ -21,7 +22,23 @@ const CreateAccountModal: FC<SignUpModalProps> = ({}) => {
     return hash.digest('hex');
   }
 
-  const handleSignUp = async () => {
+  const validateName = (e: ChangeEvent<HTMLInputElement>) => {
+    if(e.currentTarget.value.length <= 3) {
+      alert('Name should be 3 characters long');
+    }
+  }
+  const validateEmail = (email: string) => {
+    const pattern = /^[\w\.-]+@[\w\.-]+\.\w+$/
+    return pattern.test(email)
+  }
+
+  const handleSignUp = () => {
+    const userMail = emailField.current?.value ?? ''
+    console.log(userMail);
+    
+    const validEmail: boolean = validateEmail(userMail)
+    console.log(validEmail);
+    
     if (nameField.current?.value === '') {
       alert('Please fill up the Last Name field')
     }
@@ -32,18 +49,23 @@ const CreateAccountModal: FC<SignUpModalProps> = ({}) => {
       alert('Please fill up the Password field')
     }
     else {
-      const hash = crypto.createHash('sha256')
-      const name = (nameField.current?.value ?? '').replace(/[^a-zA-Z0-9]/g, "")
-      const email = (emailField.current?.value ?? '').replace(/[^a-zA-Z0-9]/g, "")
-      const passwordRaw = (passwordField.current?.value ?? '').replace(/[^a-zA-Z0-9]/g, "")
-      alert('Success')
-      if (passwordRaw) {
-        let password = hashConvert(passwordRaw)
-        Register({
-          name: name,
-          email: email,
-          password: password
-        })
+      if (!validEmail) {
+        alert('Please enter a valid email')
+      }
+      else {
+        const hash = crypto.createHash('sha256')
+        const name = (nameField.current?.value ?? '').replace(/[^a-zA-Z0-9]/g, "")
+        const email = (emailField.current?.value ?? '').replace(/[^a-zA-Z0-9]/g, "")
+        const passwordRaw = (passwordField.current?.value ?? '').replace(/[^a-zA-Z0-9]/g, "")
+        alert('Success')
+        // if (passwordRaw) {
+        //   let password = hashConvert(passwordRaw)
+        //   Register({
+        //     name: name,
+        //     email: email,
+        //     password: password
+        //   })
+        // }
       }
     }
   }
@@ -60,18 +82,18 @@ const CreateAccountModal: FC<SignUpModalProps> = ({}) => {
         justify-center
         items-center
         '>
-          <div className='w-full flex flex-row justify-between'>
+          <div className='w-full flex flex-row justify-between items-center'>
             <div>
               <h1 className='font-bold text-2xl'>Welcome to AirBNB</h1>
               <p className='text-sm'>Please signup to continue</p>
             </div>
-            <svg className='w-1/12 cursor-pointer' viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path opacity="0.4" d="M16.19 2H7.81C4.17 2 2 4.17 2 7.81V16.18C2 19.83 4.17 22 7.81 22H16.18C19.82 22 21.99 19.83 21.99 16.19V7.81C22 4.17 19.83 2 16.19 2Z" fill="#FF5A5F"/>
-              <path d="M13.0594 12.0001L15.3594 9.70011C15.6494 9.41011 15.6494 8.93011 15.3594 8.64011C15.0694 8.35011 14.5894 8.35011 14.2994 8.64011L11.9994 10.9401L9.69937 8.64011C9.40937 8.35011 8.92937 8.35011 8.63938 8.64011C8.34938 8.93011 8.34938 9.41011 8.63938 9.70011L10.9394 12.0001L8.63938 14.3001C8.34938 14.5901 8.34938 15.0701 8.63938 15.3601C8.78938 15.5101 8.97937 15.5801 9.16937 15.5801C9.35937 15.5801 9.54937 15.5101 9.69937 15.3601L11.9994 13.0601L14.2994 15.3601C14.4494 15.5101 14.6394 15.5801 14.8294 15.5801C15.0194 15.5801 15.2094 15.5101 15.3594 15.3601C15.6494 15.0701 15.6494 14.5901 15.3594 14.3001L13.0594 12.0001Z" fill="#292D32"/>
-            </svg>
+            <CgCloseR className='cursor-pointer' size={20} color='#FF5A5F' onClick={() => {console.log('Clicked!')}}/>
           </div>
           <div className='w-full flex flex-col gap-5'>
-            <InputComponent inputRef={nameField} className='border-black w-full focus:border-2 border-[1px] outline-none rounded-lg p-2' disabled={false} type='text' placeholder='Name' required={true}/>
+            <div>
+            <InputComponent onChange={validateName} inputRef={nameField} className='border-black w-full focus:border-2 border-[1px] outline-none rounded-lg p-2' disabled={false} type='text' placeholder='Name' required={true}/>
+            <p ></p>
+            </div>
             <InputComponent inputRef={emailField} className='border-black w-full focus:border-2 border-[1px] outline-none rounded-lg p-2' disabled={false} type='email' placeholder='Email' required={true}/>
             <InputComponent inputRef={passwordField} className='border-black w-full focus:border-2 border-[1px] outline-none rounded-lg p-2' disabled={false} type='password' placeholder='Password' required={true}/>
             <ButtonComponent onClick={handleSignUp} text='Sign Up' className='rounded-md w-full bg-[#FF5A5F] p-3'/>
@@ -83,6 +105,9 @@ const CreateAccountModal: FC<SignUpModalProps> = ({}) => {
         </div>
     </>
   )
+
+  console.log(nameField);
+  
 }
 
 export default CreateAccountModal
