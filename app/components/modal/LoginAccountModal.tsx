@@ -6,7 +6,7 @@ interface SignInModalProps {
 
 }
 
-const SignInModal: FC<SignInModalProps> = ({}) => {
+const LoginAcccountModal: FC<SignInModalProps> = ({}) => {
     return (
       <>
         <div className='w-full h-screen blur'>
@@ -18,4 +18,4 @@ const SignInModal: FC<SignInModalProps> = ({}) => {
     )
 }
 
-export default SignInModal
+export default LoginAcccountModal

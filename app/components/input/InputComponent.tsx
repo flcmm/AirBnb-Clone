@@ -10,7 +10,7 @@ interface inputProps {
 }
 
 
-const Input: FC<inputProps> = (
+const InputComponent: FC<inputProps> = (
     {
       disabled,
       type,
@@ -29,4 +29,4 @@ const Input: FC<inputProps> = (
   )
 }
 
-export default Input
+export default InputComponent
