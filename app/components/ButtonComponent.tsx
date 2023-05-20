@@ -1,7 +1,7 @@
 'use client'
 import { FC, MutableRefObject } from 'react'
 
-interface buttonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface ButtonComponentProps extends React.HTMLAttributes<HTMLButtonElement> {
   // custom properties goes inside here
   disabled?: boolean
   notAllowed?: boolean,
@@ -10,8 +10,8 @@ interface buttonProps extends React.HTMLAttributes<HTMLButtonElement> {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-const Button: FC<buttonProps> = ({disabled, text, onClick, className, notAllowed}: buttonProps) => {
+const ButtonComponent: FC<ButtonComponentProps> = ({disabled, text, onClick, className, notAllowed}) => {
   return <button onClick={onClick} className={className} disabled={disabled}>{text}</button>
 }
 
-export default Button
+export default ButtonComponent

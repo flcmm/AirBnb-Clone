@@ -1,14 +1,14 @@
 import React from 'react'
 import Navigation from './components/NavigationBar'
 import Modals from './components/ModalContainer'
-import Filters from './components/filterpane/Filters'
+import FiltersComponent from './components/filterpane/FiltersComponent'
 
 export default function Home() {
   return (
     <>
       <div className='relative w-full'>
         <Navigation />
-        <Filters />
+        <FiltersComponent />
         <Modals hidden={false} mode='signup' />
       </div>
     </>

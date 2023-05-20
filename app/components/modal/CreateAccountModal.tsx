@@ -3,7 +3,7 @@ import { FC, LegacyRef, useRef } from 'react'
 import { supabase } from '../../libs/supabase'
 import { Register } from '@/app/libs/auth/userSignUp'
 import InputComponent from '../input/InputComponent'
-import Button from '../Button'
+import ButtonComponent from '../ButtonComponent'
 
 interface SignUpModalProps {
   
@@ -74,7 +74,7 @@ const CreateAccountModal: FC<SignUpModalProps> = ({}) => {
             <InputComponent inputRef={nameField} className='border-black w-full focus:border-2 border-[1px] outline-none rounded-lg p-2' disabled={false} type='text' placeholder='Name' required={true}/>
             <InputComponent inputRef={emailField} className='border-black w-full focus:border-2 border-[1px] outline-none rounded-lg p-2' disabled={false} type='email' placeholder='Email' required={true}/>
             <InputComponent inputRef={passwordField} className='border-black w-full focus:border-2 border-[1px] outline-none rounded-lg p-2' disabled={false} type='password' placeholder='Password' required={true}/>
-            <Button onClick={handleSignUp} text='Sign Up' className='rounded-md w-full bg-[#FF5A5F] p-3'/>
+            <ButtonComponent onClick={handleSignUp} text='Sign Up' className='rounded-md w-full bg-[#FF5A5F] p-3'/>
           </div>
           <div className='flex flex-row gap-2 justify-start w-full'>
             <h1 className='text-sm'>Already have an account?</h1>

@@ -131,7 +131,7 @@ export const categories = [
 ]
 
 
-const Filters = () => {
+const FiltersComponent = () => {
   const currentPathName = usePathname()
   const mainPage = currentPathName === '/'
   if (!mainPage)
@@ -158,4 +158,4 @@ const Filters = () => {
   )
 }
 
-export default Filters
+export default FiltersComponent
