@@ -58,14 +58,14 @@ const CreateAccountModal: FC<SignUpModalProps> = ({}) => {
         const email = (emailField.current?.value ?? '').replace(/[^a-zA-Z0-9]/g, "")
         const passwordRaw = (passwordField.current?.value ?? '').replace(/[^a-zA-Z0-9]/g, "")
         alert('Success')
-        // if (passwordRaw) {
-        //   let password = hashConvert(passwordRaw)
-        //   Register({
-        //     name: name,
-        //     email: email,
-        //     password: password
-        //   })
-        // }
+         if (passwordRaw) {
+           let password = hashConvert(passwordRaw)
+           Register({
+             name: name,
+             email: email,
+             password: password
+          })
+        }
       }
     }
   }
